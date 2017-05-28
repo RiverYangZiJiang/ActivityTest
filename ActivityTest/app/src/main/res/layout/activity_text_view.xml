@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.yangzijiang.widget.TextViewActivity">
+
+
+    <!--android:layout_width="match_parent" 和父控件宽度一致
+    android:layout_height="wrap_content" 高度能够保住内容即可
+    android:gravity="center" 文字在控件中的对齐方式，文本居中，默认左上角对齐。可以用|来指定多个值，如"center|bottom"
+    android:textSize="24sp" android中字体以sp作为单位
+
+    -->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="This is a TextView"
+        android:gravity="center|bottom"
+        android:textSize="24sp"
+        android:textColor="#00ff00"
+        />
+</android.support.constraint.ConstraintLayout>

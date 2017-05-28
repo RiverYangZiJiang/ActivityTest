@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.yangzijiang.widget.EditTextActivity">
+
+    <!--
+    android:hint="type something here" 无内容时的提示信息
+    EditText会自动换行和拉升，EditText类似于iOS的UITextView；TextView类似于UILabel
+    android:maxLines="2" 超过两行文本会自动向上滚，不会再继续拉升
+    -->
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:hint="type something here"
+        android:maxLines="2"
+        android:text="name"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp" />
+</android.support.constraint.ConstraintLayout>

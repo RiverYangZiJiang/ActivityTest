@@ -1,0 +1,33 @@
+apply plugin: 'com.android.application'  // 表示这是一个应用程序模块。com.android.library表示是库模块
+
+android {
+    compileSdkVersion 25  // android SDK编译版本
+    buildToolsVersion "25.0.2"  // android SDK构建版本
+    defaultConfig {
+        applicationId "com.example.yangzijiang.activitytest"  // 应用id，区别不同应用
+        minSdkVersion 17  // 最低兼容的android系统版本【as在启动时就根据minSdkVersion进行了配置，所以修改minSdkVersion，就需要重启as】
+        targetSdkVersion 25  // 已经在该目标版本经过充分测试，系统将会为你的应用程序启用一些最新的功能特性
+        versionCode 1  // 应用版本号
+        versionName "1.0"  // 应用版本名称
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {  // 生成安装文件的相关配置
+        release {  // 发布版本
+            minifyEnabled false  // 是否对项目代码进行混淆
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // proguard-android.txt通用混淆规则，proguard-rules.pro当前项目特有混淆规则
+        }
+    }
+}
+
+dependencies {  // 指定当前项目所有的依赖关系
+    compile fileTree(dir: 'libs', include: ['*.jar'])  // 本地依赖，表示将libs目录下所有jar后缀的文件都添加到项目的构建路径中
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {  // 声明测试用例库
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    // compile为远程依赖，如果本地没有，则到jcenter下载库，然后再添加到项目的构建路径中
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'net.zetetic:android-database-sqlcipher:3.5.4@aar'
+    testCompile 'junit:junit:4.12'
+}
