@@ -96,7 +96,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HandleNotificationActivity"></activity>
+        <activity android:name=".HandleNotificationActivity" />
+
+        <service
+            android:name="com.example.yangzijiang.service.MyService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
