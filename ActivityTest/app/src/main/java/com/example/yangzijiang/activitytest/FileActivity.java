@@ -41,24 +41,35 @@ public class FileActivity extends AppCompatActivity {
 //
 //        moveDir();
 
-        deleteDir();
+//        deleteDir();
+        testDir();
     }
 
+    //    保存数据到files目录下的文件
     public void saveData() throws IOException {
         String data = "data";
         FileOutputStream out = null;
         BufferedWriter writer = null;
-        out = openFileOutput("data", Context.MODE_PRIVATE);
+        out = openFileOutput("data", Context.MODE_PRIVATE);  // "data"为待输入文件名
         writer = new BufferedWriter(new OutputStreamWriter(out));
         writer.write(data);
     }
 
+    // 将某目录移到mateline目录下
     public void moveDir(){
         String dir = sdcardPath() + File.separator + "s";
         boolean flag = copyDirectory(dir, getPath("mateline", MODE_PRIVATE), false);
         LogUtil.d("moveDir", String.valueOf(flag));
+
+        // 删除原目录
+        if (flag){
+
+        }
+
+        // 文件在数据库中进行目录修改，查看一下是否有必要。果然有，如T_USER_ACCOUNT表的AVATAR_URL字段
     }
 
+    // 在sdcard目录下创建s/s1目录
     public void makeDir(){
         String dir = sdcardPath() + File.separator + "s";
         File file = new File(dir);
@@ -73,6 +84,8 @@ public class FileActivity extends AppCompatActivity {
         }
     }
 
+
+    // 删除空目录
     public void deleteDir(){
         String dir = sdcardPath() + File.separator + "s";
         File file = new File(dir);
@@ -91,6 +104,21 @@ public class FileActivity extends AppCompatActivity {
         }
         LogUtil.d("sdcardPath", sdPath);
         return sdPath;
+    }
+
+    // 获得应用的files目录路径   /data/data/com.example.yangzijiang.activitytest/files
+    public void testDir(){
+        Context cont = this.getApplicationContext();
+        try {
+            LogUtil.d("getFilesDir = ", cont.getFilesDir().getCanonicalPath());  // /data/data/com.example.yangzijiang.activitytest/files
+            LogUtil.d("getCacheDir = ", cont.getCacheDir().getCanonicalPath());  // /data/data/com.example.yangzijiang.activitytest/cache
+            LogUtil.d("getExternalCacheDir = ", cont.getExternalCacheDir().getCanonicalPath());   // /storage/emulated/0/Android/data/com.example.yangzijiang.activitytest/cache
+            LogUtil.d("getExternalFilesDir files = ", cont.getExternalFilesDir("files").getCanonicalPath());  // /storage/emulated/0/Android/data/com.example.yangzijiang.activitytest/files
+            LogUtil.d("getExternalFilesDir = ", cont.getExternalFilesDir("").getCanonicalPath());  // /storage/emulated/0/Android/data/com.example.yangzijiang.activitytest/files
+            LogUtil.d("getExternalStorageDirectory = ", Environment.getExternalStorageDirectory().getCanonicalPath());  // SD卡根目录 /storage/emulated/0
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // 获得应用的files目录路径   /data/data/com.example.yangzijiang.activitytest/files
