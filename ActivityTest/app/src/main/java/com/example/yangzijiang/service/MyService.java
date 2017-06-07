@@ -2,15 +2,51 @@ package com.example.yangzijiang.service;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Binder;
 import android.os.IBinder;
+import android.support.annotation.IntDef;
+
+import com.example.yangzijiang.activitytest.LogUtil;
 
 public class MyService extends Service {
+    private DownloadBinder mBinder = new DownloadBinder();
+
+    class DownloadBinder extends Binder{
+        public void startDownload(){  // 自定义方法
+            LogUtil.d("DownloadBinder", "");
+        }
+        public int getProgress(){  // 自定义方法
+            LogUtil.d("getProgress", "");
+            return 0;
+        }
+
+    }
     public MyService() {
     }
 
     @Override
     public IBinder onBind(Intent intent) {
         // TODO: Return the communication channel to the service.
-        throw new UnsupportedOperationException("Not yet implemented");
+        LogUtil.d("onBind", "");
+        return mBinder;
+
+    }
+
+    @Override
+    public void onCreate() {  // 创建服务时会调用
+        super.onCreate();
+        LogUtil.d("onCreate", "");
+    }
+
+    @Override  // 启动服务时会调用，可以将业务逻辑写在这个方法里
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        LogUtil.d("onStartCommand", "");
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        LogUtil.d("onDestroy", "");
     }
 }
