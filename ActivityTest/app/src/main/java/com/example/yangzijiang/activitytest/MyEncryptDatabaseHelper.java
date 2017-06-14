@@ -17,7 +17,7 @@ public class MyEncryptDatabaseHelper extends SQLiteOpenHelper{
 
     public MyEncryptDatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version){
         super(context, name, factory, version);
-        Log.d(TAG, "MyDatabaseHelper: ");
+        Log.d(TAG, "MyEncryptDatabaseHelper: ");
 
         mContext = context;
     }

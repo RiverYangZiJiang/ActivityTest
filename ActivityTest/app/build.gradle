@@ -20,14 +20,19 @@ android {
     }
 }
 
-dependencies {  // 指定当前项目所有的依赖关系
-    compile fileTree(dir: 'libs', include: ['*.jar'])  // 本地依赖，表示将libs目录下所有jar后缀的文件都添加到项目的构建路径中
+dependencies {
+    // 指定当前项目所有的依赖关系
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    // 本地依赖，表示将libs目录下所有jar后缀的文件都添加到项目的构建路径中
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {  // 声明测试用例库
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     // compile为远程依赖，如果本地没有，则到jcenter下载库，然后再添加到项目的构建路径中
+    // com.jakewharton:process-phoenix:2.0.0可到https://jcenter.bintray.com/com/jakewharton/process-phoenix/路径下查看可用版本
     compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'net.zetetic:android-database-sqlcipher:3.5.4@aar'
+    compile 'com.jakewharton:process-phoenix:2.0.0'
     testCompile 'junit:junit:4.12'
+    compile files('libs/Bsdiff.jar')
 }

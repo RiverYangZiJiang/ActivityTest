@@ -20,6 +20,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         super(context, name, factory, version);
         Log.d(TAG, "MyDatabaseHelper: ");
 
+
         mContext = context;
     }
 

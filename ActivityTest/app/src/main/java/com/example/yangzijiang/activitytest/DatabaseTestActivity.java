@@ -1,11 +1,14 @@
 package com.example.yangzijiang.activitytest;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+//import com.jakewharton.processphoenix.ProcessPhoenix;
+import com.example.mylibrary.ProcessPhoenix;
 
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteException;
@@ -21,28 +24,8 @@ public class DatabaseTestActivity extends AppCompatActivity implements View.OnCl
     private Button mOpenButton;
 
     private MyEncryptDatabaseHelper openHelper;
-    @Override
-    public void onClick(View v) {
-        Log.d(TAG, "onClick: ");
-        switch (v.getId()){
-            case R.id.bt_encry:
-                SQLiteDatabase.loadLibs(this);//引用SQLiteDatabase的方法之前必须先添加这句代码
-                encrypt("BookStoreTest.db","BookStore.db","1234");
-                break;
-            case R.id.bt_open:
-                SQLiteDatabase.loadLibs(this);
-                try{
-                    openHelper.getWritableDatabase("1234");
-                }catch (SQLiteException e){
-                    if (e.getMessage().indexOf("file is encrypted or is not a database") >= 0){
-                        encrypt("BookStoreTest.db","BookStore.db","1234");
-                    }
 
-                }
-
-                break;
-        }
-    }
+    private MyDatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,14 +35,76 @@ public class DatabaseTestActivity extends AppCompatActivity implements View.OnCl
 
         mEncryptButton = (Button) findViewById(R.id.bt_encry);
         mEncryptButton.setOnClickListener(this);
-        mOpenButton = (Button) findViewById(R.id.bt_open);
+        mOpenButton = (Button) findViewById(R.id.bt_en_open_none_en);
         mOpenButton.setOnClickListener(this);
 
-        openHelper = new MyEncryptDatabaseHelper(this, "BookStore.db", null, 2);
+        Button button1 = (Button) findViewById(R.id.bt_create_none_endb);
+        button1.setOnClickListener(this);
+
+        Button button11 = (Button) findViewById(R.id.bt_create_endb);
+        button11.setOnClickListener(this);
+
+        Button button2 = (Button) findViewById(R.id.bt_restart_app);
+        button2.setOnClickListener(this);
+
+        Button button3 = (Button) findViewById(R.id.bt_delete_db);
+        button3.setOnClickListener(this);
+
+
+
+
     }
 
+    @Override
+    public void onClick(View v) {
+        Log.d(TAG, "onClick: ");
+        switch (v.getId()){
+            case R.id.bt_create_none_endb:
+                createDB();
+                break;
+            case R.id.bt_create_endb:
+                createEnDB();
+                break;
+            case R.id.bt_encry:  // 加密未加密数据库
+                SQLiteDatabase.loadLibs(this);//引用SQLiteDatabase的方法之前必须先添加这句代码
+                encrypt("BookStoreTest.db","BookStore.db","1234");
+                break;
+            case R.id.bt_en_open_none_en:
+                SQLiteDatabase.loadLibs(this);
+                try{
+                    openHelper.getWritableDatabase("1234");
+                }catch (SQLiteException e){
+                    if (e.getMessage().indexOf("file is encrypted or is not a database") >= 0){
+                        encrypt("BookStoreTest.db","BookStore.db","1234");
+                    }
+
+                }
+                break;
+            case R.id.bt_restart_app:  // 重启应用
+                ProcessPhoenix.triggerRebirth(this);
+                break;
+            case R.id.bt_delete_db:
+                boolean result = this.getDatabasePath("BookStore.db").delete();
+                LogUtil.e(TAG, "delete result = " + String.valueOf(result));
+                Toast.makeText(this, "delete result = " + String.valueOf(result), Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
+
+    public void createDB(){
+        dbHelper = new MyDatabaseHelper(this, "BookStore.db", null, 1);
+        dbHelper.getWritableDatabase();
+    }
+
+    public void createEnDB(){
+        SQLiteDatabase.loadLibs(this);
+        openHelper = new MyEncryptDatabaseHelper(this, "BookStore.db", null, 1);
+        openHelper.getWritableDatabase("1234");
+
+    }
     /**
-     * 加密数据库
+     * 加密未加密数据库
      * @param encryptedName 加密后的数据库名称
      * @param decryptedName 要加密的数据库名称
      * @param key 密码

@@ -23,9 +23,9 @@ public class FirstActivity extends AppCompatActivity {
 
         //不可忽略的 进行so库加载
 //        SQLiteDatabase.loadLibs(this);
-        dbHelper = new MyDatabaseHelper(this, "BookStore.db", null, 1);
 //        dbHelper = new MyDatabaseHelper(this, "BookStore.db", null, 1);
-        Log.d(TAG, "after new MyDatabaseHelper");
+//        dbHelper = new MyDatabaseHelper(this, "BookStore.db", null, 1);
+//        Log.d(TAG, "after new MyDatabaseHelper");
 
         Button button1 = (Button)findViewById(R.id.button_1);
         button1.setOnClickListener(new View.OnClickListener() {
@@ -67,8 +67,8 @@ public class FirstActivity extends AppCompatActivity {
 //                startActivity(intent);
 
                 // 创建非加密数据库
-                Log.d(TAG, "before dbHelper.getWritableDatabase()");
-                dbHelper.getWritableDatabase();
+//                Log.d(TAG, "before dbHelper.getWritableDatabase()");
+//                dbHelper.getWritableDatabase();
                 // 创建加密数据库
                 // 如果数据库需要加密升级，则先升级，再打开数据库，否则会崩溃
 //                dbHelper.encryptDB("BookStoreEn.db", "BookStore.db", "1234");

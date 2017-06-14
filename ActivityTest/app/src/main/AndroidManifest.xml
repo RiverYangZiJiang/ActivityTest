@@ -10,6 +10,7 @@
 
     <!-- http://blog.csdn.net/think_soft/article/details/7557101 AndroidManifest.xml文件详解（application） -->
     <application
+        android:name="com.example.yangzijiang.app.MatelineApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -46,6 +47,8 @@
         </activity>
         <activity android:name=".BroadcastActivity" />
 
+        <activity android:name="com.example.mylibrary.ProcessPhoenix" />
+
         <receiver
             android:name=".MyBroadcastReceiver"
             android:enabled="true"
@@ -56,7 +59,15 @@
         </receiver>
 
         <activity android:name=".SaveDataToFileActivity" />
-        <activity android:name=".DatabaseTestActivity" />
+
+        <activity android:name=".DatabaseTestActivity">
+             <!--<intent-filter>-->
+                 <!--<action android:name="android.intent.action.MAIN"/>-->
+                 <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+                 <!--<category android:name="android.intent.category.DEFAULT"/>-->
+             <!--</intent-filter>-->
+        </activity>
+
         <activity android:name="com.example.yangzijiang.widget.TextViewActivity">
 
             <!-- <intent-filter> -->
@@ -82,13 +93,11 @@
             <!-- </intent-filter> -->
         </activity>
         <activity android:name=".FileActivity">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity android:name=".NotificationActivity">
 
@@ -143,18 +152,39 @@
             <!-- </intent-filter> -->
         </activity>
         <activity android:name="com.example.yangzijiang.widget.SpinnerActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name="com.example.yangzijiang.service.MyServiceActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity android:name="com.example.yangzijiang.app.RestartAppActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
+        </activity>
+
+        <activity android:name="com.example.yangzijiang.widget.SpinnerActivity">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
     </application>
 

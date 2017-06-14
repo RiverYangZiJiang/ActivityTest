@@ -45,6 +45,27 @@ public class FileActivity extends AppCompatActivity {
         testDir();
     }
 
+    public void deleteFiles(){
+//        try {
+//            // 删除/data/data/com.huawei.mateline.mobile及/storage/emulated/0/Android/data/com.huawei.mateline.mobile目录下所有数据
+//            File appDataPath = this.getFilesDir().getParentFile();
+////                String sdCardDataPath = context.getExternalFilesDir("files").getParentFile().getCanonicalPath();
+//            StringBuilder sdCardDataPath = new StringBuilder();
+//            sdCardDataPath.setLength(0);
+//            sdCardDataPath.append(Environment.getExternalStorageDirectory().getCanonicalPath());
+//            sdCardDataPath.append("/Android/data/");
+//            sdCardDataPath.append(this.getPackageName());
+//
+//
+//            FileUtil.cleanDirectory(appDataPath);
+//            FileUtil.cleanDirectory(new File(String.valueOf(sdCardDataPath)));
+//            LOGGER.info("appDataPath = " + appDataPath.getCanonicalPath());
+//            LOGGER.info("sdCardDataPath = " + sdCardDataPath.toString());
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+    }
     //    保存数据到files目录下的文件
     public void saveData() throws IOException {
         String data = "data";
@@ -111,11 +132,24 @@ public class FileActivity extends AppCompatActivity {
         Context cont = this.getApplicationContext();
         try {
             LogUtil.d("getFilesDir = ", cont.getFilesDir().getCanonicalPath());  // /data/data/com.example.yangzijiang.activitytest/files
+            LogUtil.d("getFilesDir getParentFile = ", cont.getFilesDir().getParentFile().getCanonicalPath());  // /data/data/com.example.yangzijiang.activitytest
+            LogUtil.d("getFilesDir getParent = ", cont.getFilesDir().getParent());  // /data/user/0/com.example.yangzijiang.activitytest
             LogUtil.d("getCacheDir = ", cont.getCacheDir().getCanonicalPath());  // /data/data/com.example.yangzijiang.activitytest/cache
             LogUtil.d("getExternalCacheDir = ", cont.getExternalCacheDir().getCanonicalPath());   // /storage/emulated/0/Android/data/com.example.yangzijiang.activitytest/cache
             LogUtil.d("getExternalFilesDir files = ", cont.getExternalFilesDir("files").getCanonicalPath());  // /storage/emulated/0/Android/data/com.example.yangzijiang.activitytest/files
+            LogUtil.d("getExternalFilesDir files getParentFile = ", cont.getExternalFilesDir("files").getParentFile().getCanonicalPath());  // /storage/emulated/0/Android/data/com.example.yangzijiang.activitytest/files
+            LogUtil.d("getExternalFilesDir files getParent = ", cont.getExternalFilesDir("files").getParent());  // /storage/emulated/0/Android/data/com.example.yangzijiang.activitytest/files
             LogUtil.d("getExternalFilesDir = ", cont.getExternalFilesDir("").getCanonicalPath());  // /storage/emulated/0/Android/data/com.example.yangzijiang.activitytest/files
+            LogUtil.d("getExternalFilesDir null = ", cont.getExternalFilesDir(null).getCanonicalPath());  // /storage/emulated/0/Android/data/com.example.yangzijiang.activitytest/files
             LogUtil.d("getExternalStorageDirectory = ", Environment.getExternalStorageDirectory().getCanonicalPath());  // SD卡根目录 /storage/emulated/0
+
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.setLength(0);
+            stringBuilder.append(Environment.getExternalStorageDirectory().getCanonicalPath());
+            stringBuilder.append("/Android/data/");
+            stringBuilder.append(cont.getPackageName());
+            LogUtil.d("stringBuilder = ", stringBuilder.toString());  // /storage/emulated/0/Android/data/com.example.yangzijiang.activitytest
+
         } catch (IOException e) {
             e.printStackTrace();
         }

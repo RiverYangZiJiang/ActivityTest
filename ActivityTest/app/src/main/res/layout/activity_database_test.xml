@@ -4,17 +4,52 @@
     android:layout_height="match_parent">
 
     <Button
+        android:id="@+id/bt_create_none_endb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="创建未加密数据库"
+        />
+
+    <Button
+        android:id="@+id/bt_create_endb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="创建加密数据库"
+        />
+
+    <Button
         android:id="@+id/bt_encry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="加密"
+        android:text="加密未加密数据库"
  />
 
     <Button
-        android:id="@+id/bt_open"
+        android:id="@+id/bt_delete_db"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="删除数据库"
+        />
+
+    <Button
+        android:id="@+id/bt_en_open_none_en"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="用密码方式打开未加密数据库"
+        />
+
+    <Button
+        android:id="@+id/bt_create_booktable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="创建book表"
+        />
+
+    <Button
+        android:id="@+id/bt_restart_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="重启应用"
         />
 
     <!--<Button-->
