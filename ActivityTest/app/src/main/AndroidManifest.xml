@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.yangzijiang.activitytest">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <!-- http://blog.csdn.net/think_soft/article/details/7557101 AndroidManifest.xml文件详解（application） -->
@@ -108,6 +111,7 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
+
         <activity android:name=".HandleNotificationActivity" />
 
         <service
@@ -115,7 +119,9 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name="com.example.yangzijiang.file.SharedPreferencesActivity">
+        <activity android:name="com.example.yangzijiang.file.SharedPreferencesActivity"></activity>
+
+        <activity android:name="com.example.yangzijiang.service.SubThreadUpateUIActivity">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -142,24 +148,10 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
+
         <activity android:name="com.example.yangzijiang.webview.HTTPURLConnectionActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
         </activity>
-        <activity android:name="com.example.yangzijiang.widget.SpinnerActivity">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
         <activity android:name="com.example.yangzijiang.service.MyServiceActivity">
 
             <!-- <intent-filter> -->
@@ -169,6 +161,17 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
+
+        <activity android:name="com.example.yangzijiang.contentprovider.DialRuntimeActivity">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+
         <activity android:name="com.example.yangzijiang.app.RestartAppActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -185,6 +188,24 @@
 
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
+        </activity>
+
+        <activity android:name="com.example.yangzijiang.widget.LinearLayoutLayoutWeightActivity" />
+        <activity android:name="com.example.yangzijiang.widget.RelativeLayoutActivity" />
+        <activity android:name="com.example.yangzijiang.widget.IncludeLayoutActivity">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity android:name="com.example.yangzijiang.widget.CustomViewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
     </application>
 

@@ -14,9 +14,23 @@ public class WebviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
 
+        loadLocalUrl();
+    }
+
+    public void loadInternetUrl(){
         WebView webView = (WebView)findViewById(R.id.webview);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl("http://www.baidu.com");
+    }
+
+    /**
+     * 加载本地html文件
+     */
+    public void loadLocalUrl(){
+        WebView webView = (WebView)findViewById(R.id.webview);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebViewClient(new WebViewClient());
+        webView.loadUrl("file:///android_asset/hello.html");
     }
 }
