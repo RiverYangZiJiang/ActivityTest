@@ -1,4 +1,4 @@
-package com.example.yangzijiang.activitytest;
+package com.example.yangzijiang.notification;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -12,6 +12,9 @@ import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.yangzijiang.activitytest.HandleNotificationActivity;
+import com.example.yangzijiang.activitytest.R;
 
 import java.io.File;
 
@@ -31,7 +34,7 @@ public class NotificationActivity extends AppCompatActivity implements View.OnCl
             case R.id.button7:
                 // 获得系统通知管理器
                 NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                // 创建待处理意图
+                // 创建待处理意图，只有待处理意图的通知才能点击。HandleNotificationActivity是点击状态栏通知要打开的活动
                 Intent intent = new Intent(this, HandleNotificationActivity.class);
                 PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
                 // 创建通知对象
@@ -46,9 +49,10 @@ public class NotificationActivity extends AppCompatActivity implements View.OnCl
                         .setSound(Uri.fromFile(new File("/system/media/audio/ringtones/Luna.ogg")))   // 设置声音
                         .setVibrate(new long[]{0, 1000, 2000, 3000})  // 设置震动
                         .setLights(Color.GREEN, 1000, 1000)   // 设置闪光灯
+                        .setPriority(NotificationCompat.PRIORITY_MAX)  // 设置通知为最高级别，不管用户在玩游戏还是看电影，这条通知都会显示在最上方
                         .build();
                 // 通过通知管理器发送通知
-                manager.notify(1, notification);
+                manager.notify(1, notification);  // 第一个参数是通知id，要保证每个通知id唯一
                 break;
             default:
                 break;

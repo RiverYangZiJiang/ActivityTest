@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.yangzijiang.activitytest.com.example.yangzijiang.broadcast.BroadcastActivity">
+    tools:context="com.example.yangzijiang.widget.MenuActivity">
 
 </android.support.constraint.ConstraintLayout>

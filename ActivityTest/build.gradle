@@ -5,7 +5,7 @@ buildscript {
         jcenter()  // 使用jcenter代码托管仓库，很多android开源项目都会选择将代码托管到jcenter，声明之后，就可以在项目中轻松引入开源项目了。类似于iOS的pod
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.2'
+        classpath 'com.android.tools.build:gradle:2.3.2'  // gradle插件版本
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

@@ -4,6 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.yangzijiang.activitytest.com.example.yangzijiang.broadcast.BroadcastActivity">
+    tools:context="com.example.yangzijiang.broadcast.SendNormalBroadcastActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发送普通广播"
+        android:onClick="sendNormalBroadcast"/>
 
 </android.support.constraint.ConstraintLayout>
