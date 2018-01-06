@@ -7,6 +7,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.yangzijiang.db.DatabaseTestActivity;
+import com.example.yangzijiang.db.MyDatabaseHelper;
+
 
 public class FirstActivity extends AppCompatActivity {
 

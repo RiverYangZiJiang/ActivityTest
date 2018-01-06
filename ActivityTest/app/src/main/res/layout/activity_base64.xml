@@ -4,11 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.yangzijiang.broadcast.LocalBroadcastActivity">
+    tools:context="com.example.yangzijiang.encode.Base64Activity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="发送本地通知"
-        android:onClick="sendLocalBroadcast"/>
 </android.support.constraint.ConstraintLayout>

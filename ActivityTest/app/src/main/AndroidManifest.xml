@@ -20,20 +20,13 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".FirstActivity"
-            android:label="This is First Activity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+            android:label="This is First Activity" />
         <activity android:name=".SecondActivity">
 
             <!-- 配置Intent-filter，可以指定当前活动能够响应的action和category -->
@@ -56,66 +49,34 @@
                 <data android:scheme="http" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.yangzijiang.broadcast.BroadcastActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+        <activity android:name="com.example.yangzijiang.broadcast.BroadcastActivity" />
         <activity android:name="com.example.mylibrary.ProcessPhoenix" />
-
         <activity android:name=".SaveDataToFileActivity" />
-        <activity android:name=".DatabaseTestActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN"/> -->
-            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
-            <!-- <category android:name="android.intent.category.DEFAULT"/> -->
-            <!-- </intent-filter> -->
-        </activity>
+        <activity android:name="com.example.yangzijiang.db.DatabaseTestActivity"></activity>
         <activity android:name="com.example.yangzijiang.widget.TextViewActivity">
-
-            <!-- <intent-filter> -->
-
 
             <!-- &lt;!&ndash; 创建Activity时，选中Launcher Activity，则会自动增加以下两行；一个工程中不能同时有两个Launcher Activity &ndash;&gt; -->
             <!-- &lt;!&ndash;<action android:name="android.intent.action.MAIN" />&ndash;&gt; -->
 
 
             <!-- &lt;!&ndash;<category android:name="android.intent.category.LAUNCHER" />&ndash;&gt; -->
-            <!-- </intent-filter> -->
+
         </activity>
         、
         <activity android:name="com.example.yangzijiang.widget.ButtonActivity" />
         <activity android:name="com.example.yangzijiang.widget.EditTextActivity" />
-        <activity android:name="com.example.yangzijiang.widget.LinearLayoutActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity android:name=".FileActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+        <activity android:name="com.example.yangzijiang.widget.LinearLayoutActivity" />
+        <activity android:name=".FileActivity" />
         <activity android:name="com.example.yangzijiang.notification.NotificationActivity">
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".HandleNotificationActivity" />
+        <activity android:name="com.example.yangzijiang.notification.HandleNotificationActivity" />
 
         <service
             android:name="com.example.yangzijiang.service.MyService"
@@ -123,109 +84,24 @@
             android:exported="true" />
 
         <activity android:name="com.example.yangzijiang.file.SharedPreferencesActivity" />
-        <activity android:name="com.example.yangzijiang.service.SubThreadUpateUIActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity android:name=".LogUtilTestActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity android:name="com.example.yangzijiang.webview.WebviewActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+        <activity android:name="com.example.yangzijiang.service.SubThreadUpateUIActivity" />
+        <activity android:name=".LogUtilTestActivity" />
+        <activity android:name="com.example.yangzijiang.webview.WebviewActivity" />
         <activity android:name="com.example.yangzijiang.webview.HTTPURLConnectionActivity" />
-        <activity android:name="com.example.yangzijiang.service.MyServiceActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity android:name="com.example.yangzijiang.contentprovider.DialRuntimeActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+        <activity android:name="com.example.yangzijiang.service.MyServiceActivity" />
+        <activity android:name="com.example.yangzijiang.contentprovider.DialRuntimeActivity" />
         <activity android:name="com.example.yangzijiang.app.RestartAppActivity">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- <category android:name="android.intent.category.DEFAULT" /> -->
-            <!-- </intent-filter> -->
+
         </activity>
-        <activity android:name="com.example.yangzijiang.widget.SpinnerActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+        <activity android:name="com.example.yangzijiang.widget.SpinnerActivity" />
         <activity android:name="com.example.yangzijiang.widget.LinearLayoutLayoutWeightActivity" />
         <activity android:name="com.example.yangzijiang.widget.RelativeLayoutActivity" />
-        <activity android:name="com.example.yangzijiang.widget.IncludeLayoutActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity android:name="com.example.yangzijiang.widget.CustomViewActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity android:name="com.example.yangzijiang.widget.MenuActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity android:name=".ExplicitIntentActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+        <activity android:name="com.example.yangzijiang.widget.IncludeLayoutActivity" />
+        <activity android:name="com.example.yangzijiang.widget.CustomViewActivity" />
+        <activity android:name="com.example.yangzijiang.widget.MenuActivity" />
+        <activity android:name=".ExplicitIntentActivity" />
 
         <!-- 静态注册开机启动广播接收器 -->
         <receiver
@@ -245,19 +121,26 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name="com.example.yangzijiang.broadcast.SendNormalBroadcastActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+        <activity android:name="com.example.yangzijiang.broadcast.SendNormalBroadcastActivity" />
+        <activity android:name="com.example.yangzijiang.broadcast.LocalBroadcastActivity" />
+        <activity android:name="com.example.yangzijiang.widget.ListViewUseArraysActivity" />
+        <!-- LAUNCHER Activity设置android:enabled="false"，该应用直接不能编译 -->
+        <activity android:name="com.example.yangzijiang.encode.Base64Activity" />
+        <activity
+            android:name="com.example.yangzijiang.webview.UrlActivity"
+            android:label="@string/title_activity_url"
+            android:theme="@style/AppTheme.NoActionBar">
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
         </activity>
-        <activity android:name="com.example.yangzijiang.broadcast.LocalBroadcastActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+        <activity
+            android:name="com.example.yangzijiang.widget.ProgressDialogActivity"
+            android:label="@string/title_activity_progress_dialog"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

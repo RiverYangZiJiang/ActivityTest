@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'  // 表示这是一个应用程序模块
 
 android {
     compileSdkVersion 25  // android SDK编译版本
-    buildToolsVersion "25.0.2"  // android SDK构建工具版本
+    buildToolsVersion '26.0.2'  // android SDK构建工具版本
     defaultConfig {
         applicationId "com.example.yangzijiang.activitytest"  // 应用id，区别不同应用
         minSdkVersion 17  // 最低兼容的android系统版本【as在启动时就根据minSdkVersion进行了配置，所以修改minSdkVersion，就需要重启as】
@@ -18,10 +18,22 @@ android {
             // proguard-android.txt通用混淆规则，proguard-rules.pro当前项目特有混淆规则
         }
     }
+
+    sourceSets {
+        main {
+            // 1. 配置在根目录libs下可以加载第三方so库, (最好不要创建jniLibs, 在众多的开源库中可能会引起冲突,还没发现)
+            // 2. 运行时会自动将libs目录下的so库拷贝到指定目录
+            // 3. 如果自己创建的so不需要重新编译,可以将(app/build/intermediates/transforms)生成的so拷贝到这个目录
+            jniLibs.srcDirs = ['libs']
+            // 如果是单个文件夹 可以直接这样如下配置
+            // jniLibs.srcDir 'libs'
+        }
+    }
 }
 
 dependencies {// 指定当前项目所有的依赖关系
-    compile fileTree(include: ['*.jar'], dir: 'libs')  // 本地依赖，表示将libs目录下所有jar后缀的文件都添加到项目的构建路径中
+    compile fileTree(include: ['*.jar', '*.so'], dir: 'libs')
+    // 本地依赖，表示将libs目录下所有jar后缀的文件都添加到项目的构建路径中
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {  // 声明测试用例库
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -33,5 +45,7 @@ dependencies {// 指定当前项目所有的依赖关系
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'net.zetetic:android-database-sqlcipher:3.5.4@aar'
     compile 'com.jakewharton:process-phoenix:2.0.0'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.orhanobut:logger:2.1.1'
     testCompile 'junit:junit:4.12'
 }

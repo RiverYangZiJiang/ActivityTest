@@ -13,11 +13,10 @@ import android.support.v7.app.NotificationCompat;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.yangzijiang.activitytest.HandleNotificationActivity;
 import com.example.yangzijiang.activitytest.R;
 
 import java.io.File;
-
+/*android的通话类似于iOS的本地通知，android的广播类似于iOS的通知*/
 public class NotificationActivity extends AppCompatActivity implements View.OnClickListener{
 
     @Override

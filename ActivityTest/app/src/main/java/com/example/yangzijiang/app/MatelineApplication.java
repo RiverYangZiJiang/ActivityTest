@@ -1,13 +1,16 @@
 package com.example.yangzijiang.app;
 
+import java.util.List;
+
+import com.example.mylibrary.ProcessPhoenix;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
+
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.mylibrary.ProcessPhoenix;
-
-import java.util.List;
 
 /**
  * Created by yangzijiang on 07/06/2017.
@@ -39,7 +42,11 @@ public class MatelineApplication extends Application {
             isApplicationInit = true;
             Log.e(TAG, "isApplicationInit = " + String.valueOf(isApplicationInit));
         }
+
+        // initialize logger
+        Logger.addLogAdapter(new AndroidLogAdapter());
     }
+
 
 
     /**

@@ -1,7 +1,9 @@
-package com.example.yangzijiang.activitytest;
+package com.example.yangzijiang.notification;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.yangzijiang.activitytest.R;
 
 public class HandleNotificationActivity extends AppCompatActivity {
 

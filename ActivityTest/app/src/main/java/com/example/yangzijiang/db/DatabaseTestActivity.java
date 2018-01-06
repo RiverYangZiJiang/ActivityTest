@@ -1,5 +1,6 @@
-package com.example.yangzijiang.activitytest;
+package com.example.yangzijiang.db;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -7,13 +8,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-//import com.jakewharton.processphoenix.ProcessPhoenix;
 import com.example.mylibrary.ProcessPhoenix;
+import com.example.yangzijiang.activitytest.LogUtil;
+import com.example.yangzijiang.activitytest.R;
 
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteException;
 
 import java.io.File;
+import java.io.IOException;
+
+//import com.jakewharton.processphoenix.ProcessPhoenix;
 //未加密数据库升级到加密数据库
 public class DatabaseTestActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -67,9 +72,10 @@ public class DatabaseTestActivity extends AppCompatActivity implements View.OnCl
                 break;
             case R.id.bt_encry:  // 加密未加密数据库
                 SQLiteDatabase.loadLibs(this);//引用SQLiteDatabase的方法之前必须先添加这句代码
-                encrypt("BookStoreTest.db","BookStore.db","1234");
+//                encrypt("BookStoreTest.db","BookStore.db","1234");
+                encryptDatabase("BookStore.db","1234", this);
                 break;
-            case R.id.bt_en_open_none_en:
+            case R.id.bt_en_open_none_en:  // 直接用加密方式打开未加密数据库会报异常
                 SQLiteDatabase.loadLibs(this);
                 try{
                     openHelper.getWritableDatabase("1234");
@@ -104,7 +110,7 @@ public class DatabaseTestActivity extends AppCompatActivity implements View.OnCl
 
     }
     /**
-     * 加密未加密数据库
+     * 加密未加密数据库，加密前后名称不一样
      * @param encryptedName 加密后的数据库名称
      * @param decryptedName 要加密的数据库名称
      * @param key 密码
@@ -135,7 +141,7 @@ public class DatabaseTestActivity extends AppCompatActivity implements View.OnCl
 
             // 重命名已经加密的数据库
             encrypteddatabaseFile.renameTo(databaseFile);
-            encrypteddatabaseFile.delete();
+//            encrypteddatabaseFile.delete();
 
             //打开加密后的数据库，测试数据库是否加密成功
             SQLiteDatabase encrypteddatabase = SQLiteDatabase.openOrCreateDatabase(encrypteddatabaseFile, key, null);
@@ -147,6 +153,47 @@ public class DatabaseTestActivity extends AppCompatActivity implements View.OnCl
             Toast.makeText(this, "encrypt db success", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * 加密数据库，加密前后数据库名称一样
+     *
+     * @param decryptedName 要加密的数据库名称
+     * @param key 密码
+     */
+    private void encryptDatabase(String uncryptedDBName, String key, Context context)
+    {
+        try
+        {
+            File databaseFile = context.getDatabasePath(uncryptedDBName);
+            SQLiteDatabase database = SQLiteDatabase.openOrCreateDatabase(databaseFile, "", null);// 打开要加密的数据库
+
+            String decryptedNameTemp = uncryptedDBName + "_temp";
+
+            File encrypteddatabaseFile = context.getDatabasePath(decryptedNameTemp);// 新建加密后的数据库文件
+
+            // 连接到加密后的数据库，并设置密码
+            database.rawExecSQL(
+                    String.format("ATTACH DATABASE '%s' as " + decryptedNameTemp.split("\\.")[0] + " KEY '" + key + "';",
+                            encrypteddatabaseFile.getCanonicalPath()));
+            // 输出要加密的数据库表和数据到加密后的数据库文件中
+            database.rawExecSQL("SELECT sqlcipher_export('" + decryptedNameTemp.split("\\.")[0] + "');");
+            // 断开同加密后的数据库的连接
+            database.rawExecSQL("DETACH DATABASE " + decryptedNameTemp.split("\\.")[0] + ";");
+
+            // 关闭、删除已经加密的数据库
+            database.close();
+            boolean deleteUncryptedDBResult = databaseFile.delete();
+
+            // 重命名临时数据库
+            boolean renameDBResult = encrypteddatabaseFile.renameTo(databaseFile);
+
+            LogUtil.i(TAG, "encryptDatabase: encrypt db success. deleteUncryptedDBResult = " + deleteUncryptedDBResult + ", renameDBResult = " + renameDBResult);
+        } catch (IllegalStateException e) {
+            LogUtil.e(TAG, "encryptDatabase IllegalStateException");
+        } catch (IOException e) {
+            LogUtil.e(TAG, "encryptDatabase IOException");
         }
     }
 

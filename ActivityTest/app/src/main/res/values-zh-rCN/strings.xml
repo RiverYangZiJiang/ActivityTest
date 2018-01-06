@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">进行测试</string>
+	<string name="title_activity_url">urlactivity</string>
+	<string name="title_activity_progress_dialog">progressdialogactivity</string>
+	<string name="name">名称</string>
+	<string name="age">年龄</string>
+	<string name="move_up_to_cancel">Faites glisser votre doigt et annuler l\'envoi\"</string>
+
+</resources>
