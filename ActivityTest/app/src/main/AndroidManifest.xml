@@ -52,7 +52,7 @@
         <activity android:name="com.example.yangzijiang.broadcast.BroadcastActivity" />
         <activity android:name="com.example.mylibrary.ProcessPhoenix" />
         <activity android:name=".SaveDataToFileActivity" />
-        <activity android:name="com.example.yangzijiang.db.DatabaseTestActivity"></activity>
+        <activity android:name="com.example.yangzijiang.db.DatabaseTestActivity" />
         <activity android:name="com.example.yangzijiang.widget.TextViewActivity">
 
             <!-- &lt;!&ndash; 创建Activity时，选中Launcher Activity，则会自动增加以下两行；一个工程中不能同时有两个Launcher Activity &ndash;&gt; -->
@@ -129,13 +129,15 @@
         <activity
             android:name="com.example.yangzijiang.webview.UrlActivity"
             android:label="@string/title_activity_url"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.example.yangzijiang.widget.ProgressDialogActivity"
             android:label="@string/title_activity_progress_dialog"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="com.example.yangzijiang.fragment.simplefragment.SimpleFragmentActivity">
+
+        </activity>
+        <activity android:name="com.example.yangzijiang.fragment.simplefragment.LayoutLarge">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

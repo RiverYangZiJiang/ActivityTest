@@ -1,8 +1,9 @@
 apply plugin: 'com.android.application'  // 表示这是一个应用程序模块，可直接运行。com.android.library表示是库模块，必须依附别的程序运行
 
 android {
-    compileSdkVersion 25  // android SDK编译版本
-    buildToolsVersion '26.0.2'  // android SDK构建工具版本
+    compileSdkVersion 25  // android SDK编译版本，路径为/Users/sprite/Library/Android/sdk/platforms
+    buildToolsVersion '26.0.2'
+    // android SDK构建工具版本，路径为/Users/sprite/Library/Android/sdk/build-tools
     defaultConfig {
         applicationId "com.example.yangzijiang.activitytest"  // 应用id，区别不同应用
         minSdkVersion 17  // 最低兼容的android系统版本【as在启动时就根据minSdkVersion进行了配置，所以修改minSdkVersion，就需要重启as】
@@ -41,11 +42,12 @@ dependencies {// 指定当前项目所有的依赖关系
     // compile为远程依赖，如果本地没有，则到jcenter下载库，然后再添加到项目的构建路径中
     // com.jakewharton:process-phoenix:2.0.0可到https://jcenter.bintray.com/com/jakewharton/process-phoenix/路径下查看可用版本
     compile files('libs/Bsdiff.jar')
-    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'net.zetetic:android-database-sqlcipher:3.5.4@aar'
     compile 'com.jakewharton:process-phoenix:2.0.0'
     compile 'com.android.support:design:25.3.1'
     compile 'com.orhanobut:logger:2.1.1'
+    compile 'com.android.support:support-v4:25.3.1'
     testCompile 'junit:junit:4.12'
 }
