@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'  // 表示这是一个应用程序模块
 android {
     compileSdkVersion 25  // android SDK编译版本，路径为/Users/sprite/Library/Android/sdk/platforms
     buildToolsVersion '26.0.2'
-    // android SDK构建工具版本，路径为/Users/sprite/Library/Android/sdk/build-tools
+    // android SDK构建工具版本，路径为/Users/sprite/Library/Android/sdk/build-tools，在SDK Manager——SDK Tools下载
     defaultConfig {
         applicationId "com.example.yangzijiang.activitytest"  // 应用id，区别不同应用
         minSdkVersion 17  // 最低兼容的android系统版本【as在启动时就根据minSdkVersion进行了配置，所以修改minSdkVersion，就需要重启as】

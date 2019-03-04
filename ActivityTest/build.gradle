@@ -1,11 +1,16 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
+/*
+ * 配置 Gradle 工具编译和构建您的应用的方式。您会看到具有此名称的多个文件：一个用于项目，一个用于“应用”模块。每个模块均有自己的 build.gradle 文件
+ * 具体参考https://developer.android.google.cn/studio/build/index.html
+ *
+ * */
 buildscript {
     repositories {
         jcenter()  // 使用jcenter代码托管仓库，很多android开源项目都会选择将代码托管到jcenter，声明之后，就可以在项目中轻松引入开源项目了。类似于iOS的pod
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'  // gradle插件版本，所有插件所在路径/Applications/Android\ Studio.app/Contents/gradle/m2repository/com/android/tools/build/gradle
+        classpath 'com.android.tools.build:gradle:3.0.1'  // gradle插件版本，所有插件所在路径/Applications/Android\ Studio.app/Contents/gradle/m2repository/com/android/tools/build/gradle
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -15,6 +20,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        google()
     }
 }
 

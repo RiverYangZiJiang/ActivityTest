@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--android工程中最重要的问题，描述应用的基本特性并定义其每个组件。-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.yangzijiang.activitytest">
@@ -67,15 +68,7 @@
         <activity android:name="com.example.yangzijiang.widget.EditTextActivity" />
         <activity android:name="com.example.yangzijiang.widget.LinearLayoutActivity" />
         <activity android:name=".FileActivity" />
-        <activity android:name="com.example.yangzijiang.notification.NotificationActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+        <activity android:name="com.example.yangzijiang.notification.NotificationActivity" />
         <activity android:name="com.example.yangzijiang.notification.HandleNotificationActivity" />
 
         <service
@@ -134,16 +127,21 @@
             android:name="com.example.yangzijiang.widget.ProgressDialogActivity"
             android:label="@string/title_activity_progress_dialog"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.example.yangzijiang.fragment.simplefragment.SimpleFragmentActivity">
-
-        </activity>
-        <activity android:name="com.example.yangzijiang.fragment.simplefragment.LayoutLarge">
+        <activity android:name="com.example.yangzijiang.fragment.simplefragment.SimpleFragmentActivity" />
+        <activity android:name="com.example.yangzijiang.fragment.simplefragment.LayoutLarge"></activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".DisplayMessageActivity"
+            android:parentActivityName=".MainActivity">
+            <!-- android:parentActivityName=".MainActivity"设置返回按钮，默认无返回按钮 -->
+        </activity>
+
     </application>
 
 </manifest>
